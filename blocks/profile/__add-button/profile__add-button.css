@@ -1,0 +1,9 @@
+.profile__add-button {
+  width: 150px;
+  height: 50px;
+  cursor: url(../../../images/hand_hover.svg), auto;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+}
