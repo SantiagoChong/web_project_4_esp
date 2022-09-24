@@ -1,0 +1,8 @@
+.cards__like-button {
+  cursor: url(../../../images/hand_hover.svg), auto;
+  width: 21px;
+}
+
+.cards__like-button:hover {
+  opacity: 0.5;
+}
