@@ -37,6 +37,46 @@
           </div>
         </section>
 
+        <section class="popup">
+          <div class="form">
+            <img
+              class="popup__toggle"
+              src="./images/close-icon.svg"
+              alt="close icon"
+            />
+            <form class="popup__container">
+              <h1 class="popup__title">Editar perfil</h1>
+              <fieldset
+                class="popup__input-container popup__input-container_ctrl_texts"
+              >
+                <label for="name" class="popup__label"></label>
+                <input
+                  type="text"
+                  id="name"
+                  class="popup__item popup__item_el_name"
+                  name="name"
+                  value="Jacques Cousteau"
+                  placeholder="Nombre"
+                  required
+                />
+                <label for="description" class="popup__label"></label>
+                <input
+                  type="text"
+                  id="description"
+                  class="popup__item popup__item_el_description"
+                  name="description"
+                  value="Explorador"
+                  placeholder="Acerca de mí"
+                  required
+                />
+              </fieldset>
+              <fieldset class="popup__handlers">
+                <button type="submit" class="popup__button">Guardar</button>
+              </fieldset>
+            </form>
+          </div>
+        </section>
+
         <section class="elements">
           <ul class="cards">
             <li class="cards__item">

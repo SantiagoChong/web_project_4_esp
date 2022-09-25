@@ -1,0 +1,16 @@
+.popup__toggle {
+  align-self: flex-end;
+  width: 32px;
+  cursor: url(../../../images/hand_hover.svg), auto;
+}
+
+.popup__toggle:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 580px) {
+  .popup__toggle {
+    width: 18px;
+    padding-bottom: 15px;
+  }
+}
