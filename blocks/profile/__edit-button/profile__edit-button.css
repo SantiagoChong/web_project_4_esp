@@ -4,6 +4,7 @@
   border: 0;
   width: 24px;
   height: 24px;
+  transition: opacity 0.2s;
   cursor: url(../../../images/hand_hover.svg), auto;
 }
 

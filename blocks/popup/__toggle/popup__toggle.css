@@ -1,6 +1,7 @@
 .popup__toggle {
   align-self: flex-end;
   width: 32px;
+  transition: opacity 0.2s;
   cursor: url(../../../images/hand_hover.svg), auto;
 }
 

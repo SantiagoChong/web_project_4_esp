@@ -10,35 +10,37 @@
   <body>
     <div class="page">
       <header class="header">
-        <img class="logo" src="./images/logo.svg" alt="image logo" />
+        <img class="logo" src="./images/logo.svg" alt="logo" />
         <div class="header__line"></div>
       </header>
-
       <main class="container">
         <section class="profile">
           <div class="profile__container">
-            <img src="./images/image.jpg" alt="" class="profile__photo" />
+            <img
+              src="./images/image.jpg"
+              alt="imagen de perfil"
+              class="profile__photo"
+            />
             <div class="profile__info">
               <h1 class="profile__title">Jacques Cousteau</h1>
               <button type="button" class="profile__edit-button"></button>
               <p class="profile__text">Explorador</p>
             </div>
           </div>
-          <div class="profile__add-button">
+          <button type="button" class="profile__add-button">
             <img
               src="./images/add_button.svg"
-              atl="add button"
+              atl="boton de añadir"
               class="profile__button-item"
             />
-          </div>
+          </button>
         </section>
-
         <section class="popup popup_opened">
           <div class="form">
             <img
               class="popup__toggle"
               src="./images/close-icon.svg"
-              alt="close icon"
+              alt="icono de cerrar"
             />
             <form class="popup__container">
               <h1 class="popup__title">Editar perfil</h1>
@@ -72,102 +74,124 @@
             </form>
           </div>
         </section>
-
         <section class="elements">
           <ul class="cards">
             <li class="cards__item">
               <img
                 src="./images/kirill-pershin-1088404-unsplash.jpg"
-                alt="card image"
+                alt="imagen de tarjeta"
                 class="card__image"
               />
               <div class="cards__rectangle">
                 <p class="cards__text">Valle de Yosemite</p>
-                <img
-                  src="./images/like.svg"
-                  alt="like button"
-                  class="cards__like-button"
-                />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="like"
+                    id="checkbox"
+                    class="cards__checkbox"
+                  />
+                  <span class="cards__like-button"></span>
+                </label>
               </div>
             </li>
             <li class="cards__item">
               <img
                 src="./images/kirill-pershin-1404681-unsplash1.jpg"
-                alt="card image"
+                alt="imagen de tarjeta"
                 class="card__image"
               />
               <div class="cards__rectangle">
                 <p class="cards__text">Lago Louise</p>
-                <img
-                  src="./images/like.svg"
-                  alt="like button"
-                  class="cards__like-button"
-                />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="like"
+                    id="checkbox"
+                    class="cards__checkbox"
+                  />
+                  <span class="cards__like-button"></span>
+                </label>
               </div>
             </li>
             <li class="cards__item">
               <img
                 src="./images/kirill-pershin-1556355-unsplash.jpg"
-                alt="card image"
+                alt="imagen de tarjeta"
                 class="card__image"
               />
               <div class="cards__rectangle">
                 <p class="cards__text">Montañas Calvas</p>
-                <img
-                  src="./images/like.svg"
-                  alt="like button"
-                  class="cards__like-button"
-                />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="like"
+                    id="checkbox"
+                    class="cards__checkbox"
+                  />
+                  <span class="cards__like-button"></span>
+                </label>
               </div>
             </li>
             <li class="cards__item">
               <img
                 src="./images/kirill-pershin-1404681-unsplash.jpg"
-                alt="card image"
+                alt="imagen de tarjeta"
                 class="card__image"
               />
               <div class="cards__rectangle">
                 <p class="cards__text">Latemar</p>
-                <img
-                  src="./images/like.svg"
-                  alt="like button"
-                  class="cards__like-button"
-                />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="like"
+                    id="checkbox"
+                    class="cards__checkbox"
+                  />
+                  <span class="cards__like-button"></span>
+                </label>
               </div>
             </li>
             <li class="cards__item">
               <img
                 src="./images/kirill-pershin-1556355-unsplash1.jpg"
-                alt="card image"
+                alt="imagen de tarjeta"
                 class="card__image"
               />
               <div class="cards__rectangle">
                 <p class="cards__text">Parque Nacional de la Vanoise</p>
-                <img
-                  src="./images/like.svg"
-                  alt="like button"
-                  class="cards__like-button"
-                />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="like"
+                    id="checkbox"
+                    class="cards__checkbox"
+                  />
+                  <span class="cards__like-button"></span>
+                </label>
               </div>
             </li>
             <li class="cards__item">
               <img
                 src="./images/kirill-pershin-1088404-unsplash1.jpg"
-                alt="card image"
+                alt="imagen de tarjeta"
                 class="card__image"
               />
               <div class="cards__rectangle block">
                 <p class="cards__text">Lago di Braies</p>
-                <img
-                  src="./images/like.svg"
-                  alt="like button"
-                  class="cards__like-button"
-                />
+                <label>
+                  <input
+                    type="checkbox"
+                    name="like"
+                    id="checkbox"
+                    class="cards__checkbox"
+                  />
+                  <span class="cards__like-button"></span>
+                </label>
               </div>
             </li>
           </ul>
         </section>
-
         <footer class="footer">
           <p class="footer__copyright">© 2022 Santiago Chong</p>
         </footer>
