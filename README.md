@@ -1,16 +1,19 @@
 # Proyecto 4: Alrededor de los Estados Unidos
 
 ### Descripción general
-
+* Introducción
 * Figma
-* Imágenes
+* GitHub
 
-**Figma**
 
-* [Enlace al proyecto en Figma](https://www.figma.com/file/LDMgqWesKpQkIwhOfEBuTS/WEB%2C-Sprint-5%3A-Around-The-U.S.-%7C-desktop-%2B-mobile?node-id=0%3A1)
-
-**Imágenes**
-
-A la hora de trabajar, debes optar por exportar las imágenes directamente desde Figma; te recomendamos hacerlo para practicar más. No olvides optimizarlas [aquí](https://tinypng.com/), para que tu proyecto cargue más rápido. 
-
-¡Esperamos que te diviertas con JavaScript!
+**Introducción**    
+  
+Este es un proyecto de una página interactiva en la que los usuarios pueden añadir, eliminar o dar "me gusta" a las fotos. Está dividida en varios sprints, en el primer sprint se creó una página con HTML para hacer la maquetación de la página, CSS para agregar los estílos manejando la metodología BEM (Bloque, Elemento y Modificador) y un poco de JS para establecer el comportamiento de popup emergente (formulario) donde se pueden obtener información para el perfil del usuario y mostrarlo en la página; también es una página responsiva para los diferentes dispositivos utilizando mediaqueries y valores relativos.
+  
+**Figma**  
+  
+Las especificaciones de diseño y las imágenes a utilizar se obtuvo de Figma.
+  
+**Github**  
+  
+Enlace de la página desplegada en Github:
