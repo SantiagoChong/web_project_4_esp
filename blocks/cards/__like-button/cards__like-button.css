@@ -2,7 +2,7 @@
   position: absolute;
   right: 0;
   background-image: url(../../../images/like.svg);
-  cursor: url(../../../images/hand_hover.svg), auto;
+  cursor: pointer;
   width: 21px;
   height: 19px;
   transition: opacity 0.2s;
