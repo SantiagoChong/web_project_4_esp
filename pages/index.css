@@ -1,6 +1,6 @@
 @import url(../vendor/normalize.css);
 @import url(../blocks/root/root.css);
-@import url(../font/Inter\ Web/inter.css);
+@import url(../font/inter_web/inter.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/logo/logo.css);
 @import url(../blocks/header/__line/header__line.css);
@@ -27,7 +27,7 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/cards/__item/cards__item.css);
-@import url(../blocks/cards/__image/card__image.css);
+@import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__rectangle/cards__rectangle.css);
 @import url(../blocks/cards/__text/cards__text.css);
 @import url(../blocks/cards/__checkbox/cards__checkbox.css);
