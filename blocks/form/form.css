@@ -3,12 +3,12 @@
   flex-direction: column;
   justify-content: center;
   width: 462px;
-  padding-left: 16px;
+  padding: 160px 0 0 16px;
 }
 
 @media screen and (max-width: 580px) {
   .form {
     width: 282px;
-    padding: 0 0 35px;
+    padding: 80px 0 0;
   }
 }

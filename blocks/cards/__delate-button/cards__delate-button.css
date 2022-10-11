@@ -1,9 +1,10 @@
-.cards__like-button {
+.cards__delate-button {
   position: absolute;
-  right: 0;
-  background-image: url(../../../images/like.svg);
+  top: 18px;
+  right: 15px;
+  background-image: url(../../../images/delate-button.svg);
   cursor: pointer;
-  width: 21px;
+  width: 18px;
   height: 19px;
   transition: opacity 0.2s;
   background-color: transparent;
@@ -11,6 +12,6 @@
   border: 0;
 }
 
-.cards__like-button:hover {
+.cards__delate-button:hover {
   opacity: 0.5;
 }

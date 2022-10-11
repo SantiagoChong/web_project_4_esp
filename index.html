@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <link rel="stylesheet" href="./pages/index.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alrededor de los EE.UU.</title>
   </head>
   <body>
     <div class="root">
       <header class="header">
-        <img class="logo" src="./images/logo.svg" alt="logo"/>
+        <img class="logo" src="./images/logo.svg" alt="logo" />
         <div class="header__line"></div>
       </header>
       <main class="container">
         <section class="profile">
           <div class="profile__container">
-            <img src="./images/image.jpg" alt="imagen de perfil" class="profile__photo"/>
+            <img src="./images/image.jpg" alt="imagen de perfil" class="profile__photo" />
             <div class="profile__info">
               <h1 class="profile__title">Jacques Cousteau</h1>
               <button type="button" class="profile__edit-button"></button>
@@ -24,95 +24,102 @@
             </div>
           </div>
           <button type="button" class="profile__add-button">
-            <img src="./images/add_button.svg" alt="boton de añadir" class="profile__button-item"/>
+            <img src="./images/add_button.svg" alt="boton de añadir" class="profile__button-item" />
           </button>
         </section>
-        <section class="popup popup_opened">
-          <div class="form">
-            <img class="popup__toggle" src="./images/close-icon.svg" alt="icono de cerrar"/>
+        <section class="elements">
+          <ul class="cards"></ul>
+        </section>
+        <footer class="footer">
+          <p class="footer__copyright">© 2022 Santiago Chong</p>
+        </footer>
+        <div class="popup popup_profile">
+          <div class="form form_profile">
+            <img
+              class="popup__toggle popup__toggle_close_profile"
+              src="./images/close-icon.svg"
+              alt="icono de cerrar"
+            />
             <form class="popup__container">
               <h1 class="popup__title">Editar perfil</h1>
               <fieldset class="popup__input-container popup__input-container_ctrl_texts">
                 <label for="name" class="popup__label"></label>
-                <input type="text" id="name" class="popup__item popup__item_el_name" name="name" value="Jacques Cousteau" placeholder="Nombre" required/>
+                <input
+                  type="text"
+                  id="name"
+                  class="popup__item popup__item_el_name"
+                  name="name"
+                  value="Jacques Cousteau"
+                  placeholder="Nombre"
+                  required
+                />
                 <label for="description" class="popup__label"></label>
-                <input type="text" id="description" class="popup__item popup__item_el_description" name="description" value="Explorador" placeholder="Acerca de mí" required/>
+                <input
+                  type="text"
+                  id="description"
+                  class="popup__item popup__item_el_description"
+                  name="description"
+                  value="Explorador"
+                  placeholder="Acerca de mí"
+                  required
+                />
               </fieldset>
               <fieldset class="popup__handlers">
                 <button type="submit" class="popup__button">Guardar</button>
               </fieldset>
             </form>
           </div>
-        </section>
-        <section class="elements">
-          <ul class="cards">
-            <li class="cards__item">
-              <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="imagen de tarjeta" class="cards__image"/>
-              <div class="cards__rectangle">
-                <h3 class="cards__text">Valle de Yosemite</h3>
-                <label>
-                  <input type="checkbox" name="like" class="cards__checkbox"/>
-                  <span class="cards__like-button"></span>
-                </label>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img src="./images/kirill-pershin-1404681-unsplash1.jpg" alt="imagen de tarjeta" class="cards__image"/>
-              <div class="cards__rectangle">
-                <h3 class="cards__text">Lago Louise</h3>
-                <label>
-                  <input type="checkbox" name="like" class="cards__checkbox"/>
-                  <span class="cards__like-button"></span>
-                </label>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="imagen de tarjeta" class="cards__image"/>
-              <div class="cards__rectangle">
-                <h3 class="cards__text">Montañas Calvas</h3>
-                <label>
-                  <input type="checkbox" name="like" class="cards__checkbox"/>
-                  <span class="cards__like-button"></span>
-                </label>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="imagen de tarjeta" class="cards__image"/>
-              <div class="cards__rectangle">
-                <h3 class="cards__text">Latemar</h3>
-                <label>
-                  <input type="checkbox" name="like" class="cards__checkbox"/>
-                  <span class="cards__like-button"></span>
-                </label>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img src="./images/kirill-pershin-1556355-unsplash1.jpg" alt="imagen de tarjeta" class="cards__image"/>
-              <div class="cards__rectangle">
-                <h3 class="cards__text">Parque Nacional de la Vanoise</h3>
-                <label>
-                  <input type="checkbox" name="like" class="cards__checkbox"/>
-                  <span class="cards__like-button"></span>
-                </label>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img src="./images/kirill-pershin-1088404-unsplash1.jpg" alt="imagen de tarjeta" class="cards__image"/>
-              <div class="cards__rectangle block">
-                <h3 class="cards__text">Lago di Braies</h3>
-                <label>
-                  <input type="checkbox" name="like" class="cards__checkbox"/>
-                  <span class="cards__like-button"></span>
-                </label>
-              </div>
-            </li>
-          </ul>
-        </section>
-        <footer class="footer">
-          <p class="footer__copyright">© 2022 Santiago Chong</p>
-        </footer>
+        </div>
+        <div class="popup popup_new-card">
+          <div class="form form_new-card">
+            <img class="popup__toggle popup__toggle_close_card" src="./images/close-icon.svg" alt="icono de cerrar" />
+            <form class="popup__container">
+              <h1 class="popup__title">Nuevo Lugar</h1>
+              <fieldset class="popup__input-container popup__input-container_ctrl_texts">
+                <label for="name" class="popup__label"></label>
+                <input
+                  type="text"
+                  id="title"
+                  class="popup__item popup__item_el_name"
+                  name="title"
+                  placeholder="Título"
+                  required
+                />
+                <label for="image" class="popup__label"></label>
+                <input
+                  type="text"
+                  id="image"
+                  class="popup__item popup__item_el_description"
+                  name="image"
+                  placeholder="Enlace de la imagen"
+                  required
+                />
+              </fieldset>
+              <fieldset class="popup__handlers">
+                <button type="submit" class="popup__button">Crear</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div class="popup popup_image">
+          <div class="popup__image-container">
+            <img class="popup__toggle popup__toggle_close_image" src="./images/close-icon.svg" alt="icono de cerrar" />
+            <img class="popup__image" src="" alt="imagen de tarjeta" />
+            <p class="popup__image-title"></p>
+          </div>
+        </div>
       </main>
     </div>
+    <template class="template__cards">
+      <li class="cards__item">
+        <img src="" alt="imagen de tarjeta" class="cards__image" />
+        <button class="cards__delate-button"></button>
+        <div class="cards__rectangle">
+          <h3 class="cards__text"></h3>
+          <button class="cards__like-button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./pages/script.js"></script>
   </body>
 </html>
