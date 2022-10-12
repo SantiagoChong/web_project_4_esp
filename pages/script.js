@@ -1,114 +1,120 @@
 const cardsContainer = document.querySelector(".cards");
-const popUpProfile = document.querySelector(".popup_profile");
-const popUpNewCard = document.querySelector(".popup_new-card");
-const newCardButton = document.querySelector(".profile__add-button");
-const popUpImage = document.querySelector(".popup_image");
+const popup = document.querySelectorAll(".popup");
 const editButton = document.querySelector(".profile__edit-button");
+const popupProfile = document.querySelector(".popup_profile");
+const nameInput = document.querySelector("#name");
+const descriptionInput = document.querySelector("#description");
+const nameElement = document.querySelector(".profile__title");
+const descriptionElement = document.querySelector(".profile__text");
+const popupNewCard = document.querySelector(".popup_new-card");
+const newCardButton = document.querySelector(".profile__add-button");
+const popupImageContainer = document.querySelector(".popup_image");
+const cardTitleInput = document.querySelector("#title");
+const cardImageInput = document.querySelector("#image");
 const likeButton = document.querySelector(".cards__like-button");
-const closeButtonProfile = document.querySelector(".popup__toggle_close_profile");
-const closeButtonCard = document.querySelector(".popup__toggle_close_card");
-const closeButtonImage = document.querySelector(".popup__toggle_close_image");
+const delateButton = document.querySelector(".cards__delate-button");
+const closeButton = document.querySelectorAll(".popup__toggle");
 const templateCards = document.querySelector(".template__cards").content.querySelector(".cards__item");
-const formProfile = document.querySelector(".form_profile");
+const profileForm = document.querySelector(".form_profile");
 const newCardForm = document.querySelector(".form_new-card");
+const popupImageTitle = document.querySelector(".popup__image-title");
+const popupImage = document.querySelector(".popup__image");
 
-editButton.addEventListener("click", function (evt) {
-  popUpProfile.classList.add("popup_opened");
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+}
+
+editButton.addEventListener("click", function () {
+  openPopup(popupProfile);
 });
 
-formProfile.addEventListener("submit", function (evt) {
+closeButton.forEach((button) => {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => closePopup(popup));
+});
+
+profileForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  const nameInput = document.querySelector("#name").value;
-  const descriptionInput = document.querySelector("#description").value;
-  const name = (document.querySelector(".profile__title").textContent = nameInput);
-  const description = (document.querySelector(".profile__text").textContent = descriptionInput);
-  popUpProfile.classList.remove("popup_opened");
-  evt.target.reset();
-});
-
-closeButtonProfile.addEventListener("click", function (evt) {
-  popUpProfile.classList.remove("popup_opened");
+  nameElement.textContent = nameInput.value;
+  descriptionElement.textContent = descriptionInput.value;
+  closePopup(popupProfile);
 });
 
 const initialCards = [
   {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+    title: "Lago di Braies",
+    url: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
   {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+    title: "Parque Nacional de la Vanoise",
+    url: "https://code.s3.yandex.net/web-code/vanoise.jpg",
   },
   {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+    title: "Latemar",
+    url: "https://code.s3.yandex.net/web-code/latemar.jpg",
   },
   {
-    name: "Montañas Calvas",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+    title: "Montañas Calvas",
+    url: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
   },
   {
-    name: "Lago Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+    title: "Lago Louise",
+    url: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
   },
   {
-    name: "Valle de Yosemite",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+    title: "Valle de Yosemite",
+    url: "https://code.s3.yandex.net/web-code/yosemite.jpg",
   },
 ];
 
+function createCard(title, url) {
+  const cardElement = templateCards.cloneNode(true);
+  cardElement.querySelector(".cards__text").textContent = title;
+  cardElement.querySelector(".cards__image").src = url;
+  cardElement.querySelector(".cards__image").alt = title;
+  cardElement.querySelector(".cards__delate-button").addEventListener("click", function (evt) {
+    cardElement.remove();
+  });
+  cardElement.querySelector(".cards__like-button").addEventListener("click", function (evt) {
+    evt.target.classList.toggle("cards__like-button_active");
+  });
+  cardElement.querySelector(".cards__image").addEventListener("click", (evt) => {
+    openPopup(popupImageContainer);
+    popupImage.src = evt.target.src;
+    popupImage.alt = title;
+    popupImageTitle.textContent = title;
+  });
+  return cardElement;
+}
+
 initialCards.forEach((element) => {
-  const newCard = templateCards.cloneNode(true);
-  newCard.querySelector(".cards__image").src = element.link;
-  newCard.querySelector(".cards__text").textContent = element.name;
-  newCard.setAttribute("title", element.name);
+  const newCard = createCard(element.title, element.url);
   cardsContainer.prepend(newCard);
 });
 
 newCardButton.addEventListener("click", function (evt) {
-  popUpNewCard.classList.add("popup_opened");
+  openPopup(popupNewCard);
 });
 
 newCardForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  const title = document.querySelector("#title").value;
-  const url = document.querySelector("#image").value;
-  const newCard = templateCards.cloneNode(true);
-  newCard.querySelector(".cards__image").src = url;
-  newCard.querySelector(".cards__text").textContent = title;
-  newCard.setAttribute("title", title);
+  const title = cardTitleInput.value;
+  const url = cardImageInput.value;
+  const newCard = createCard(title, url);
   cardsContainer.prepend(newCard);
-  popUpNewCard.classList.remove("popup_opened");
+  closePopup(popupNewCard);
   evt.target.reset();
-});
-
-closeButtonCard.addEventListener("click", function (evt) {
-  popUpNewCard.classList.remove("popup_opened");
-});
-
-cardsContainer.addEventListener("click", function (evt) {
-  if (evt.target.tagName === "IMG") {
-    popUpImage.querySelector(".popup__image").src = evt.target.src;
-    popUpImage.classList.add("popup_opened");
-    const title = evt.target.parentNode.getAttribute("title");
-    document.querySelector(".popup__image-title").textContent = title;
-  }
-  if (evt.target.classList.contains("cards__delate-button")) {
-    evt.target.parentNode.remove();
-  }
-  if (evt.target.classList.contains("cards__like-button")) {
-    evt.target.classList.toggle("cards__like-button_active");
-  }
-});
-
-closeButtonImage.addEventListener("click", function (evt) {
-  popUpImage.classList.remove("popup_opened");
 });
 
 document.addEventListener("keydown", function (evt) {
   if (evt.key === "Escape") {
-    popUpImage.classList.remove("popup_opened");
-    popUpProfile.classList.remove("popup_opened");
-    popUpNewCard.classList.remove("popup_opened");
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
   }
 });
