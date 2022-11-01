@@ -120,8 +120,11 @@ document.addEventListener("keydown", function (evt) {
   }
 });
 
-/*popupImageContainer.addEventListener("click", function (evt) {
-  if (evt.target.classList.content("popup")) {
-    closePopup(popupImageContainer);
-  }
-});*/
+document.addEventListener("click", function (evt) {
+  const popups = Array.from(document.querySelectorAll(".popup"));
+  popups.forEach(function (popup) {
+    if (evt.target.classList.contains("popup")) {
+      popup.classList.remove("popup_opened");
+    }
+  });
+});
