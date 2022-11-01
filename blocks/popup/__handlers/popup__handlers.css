@@ -2,12 +2,12 @@
   border: 0;
   width: 358px;
   padding: 0;
-  margin: 48px auto 36.51px;
+  margin: 0 auto 36.51px;
 }
 
 @media screen and (max-width: 580px) {
   .popup__handlers {
     width: 238px;
-    margin: 46px auto 25px;
+    margin: 0 auto 25px;
   }
 }

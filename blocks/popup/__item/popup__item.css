@@ -1,11 +1,12 @@
 .popup__item {
   border: 0;
   width: 358px;
-  height: 57px;
+  height: 40px;
   box-sizing: border-box;
   border-bottom: 1px solid rgb(0, 0, 0, 0.2);
   font-size: 14px;
   font-family: inherit;
+  margin-bottom: 20px;
 }
 
 .popup__item:focus {

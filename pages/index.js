@@ -119,3 +119,9 @@ document.addEventListener("keydown", function (evt) {
     }
   }
 });
+
+/*popupImageContainer.addEventListener("click", function (evt) {
+  if (evt.target.classList.content("popup")) {
+    closePopup(popupImageContainer);
+  }
+});*/
