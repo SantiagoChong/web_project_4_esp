@@ -1,22 +1,22 @@
-function showInputError(formElement, inputElement, errorMessage) {
+function showInputError(formElement, inputElement, errorMessage, inputErrorClass, errorClass) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("popup__item_type_error");
+  inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__item-error_active");
+  errorElement.classList.add(errorClass);
 }
 
-function hideInputError(formElement, inputElement) {
+function hideInputError(formElement, inputElement, inputErrorClass, errorClass) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("popup__item_type_error");
-  errorElement.classList.remove("popup__item-error_active");
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.classList.remove(errorClass);
   errorElement.textContent = "";
 }
 
-function checkInputValidity(formElement, inputElement) {
+function checkInputValidity(formElement, inputElement, inputErrorClass, errorClass) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }
 }
 
@@ -26,24 +26,31 @@ function hasInvalidInput(inputList) {
   });
 }
 
-function toggleButtonState(inputList, buttonElement) {
+function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("popup__button_disabled");
+    buttonElement.classList.add(inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove("popup__button_disabled");
+    buttonElement.classList.remove(inactiveButtonClass);
     buttonElement.disabled = false;
   }
 }
 
-function setEvtListener(formElement) {
-  const inputList = Array.from(formElement.querySelectorAll(".popup__item"));
-  const buttonElement = formElement.querySelector(".popup__button");
-  toggleButtonState(inputList, buttonElement);
+function setEvtListener(
+  formElement,
+  inputSelector,
+  submitButtonSelector,
+  inactiveButtonClass,
+  inputErrorClass,
+  errorClass
+) {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const buttonElement = formElement.querySelector(submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, inactiveButtonClass);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
+      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     });
   });
 }
@@ -54,7 +61,14 @@ function enableValidation(selector) {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    setEvtListener(formElement);
+    setEvtListener(
+      formElement,
+      selector.inputSelector,
+      selector.submitButtonSelector,
+      selector.inactiveButtonClass,
+      selector.inputErrorClass,
+      selector.errorClass
+    );
   });
 }
 
@@ -62,7 +76,7 @@ enableValidation({
   formSelector: ".popup__container",
   inputSelector: ".popup__item",
   submitButtonSelector: ".popup__button",
-  inactiveButtonClass: ".popup__button_disabled",
-  inputErrorClass: ".popup__item_type_error",
-  errorClass: ".popup__item-error_active",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__item_type_error",
+  errorClass: "popup__item-error_active",
 });
