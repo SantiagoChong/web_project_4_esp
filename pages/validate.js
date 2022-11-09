@@ -47,6 +47,11 @@ function setEvtListener(
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
   toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+  formElement.addEventListener("reset", () => {
+    setTimeout(() => {
+      toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+    }, 0);
+  });
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
