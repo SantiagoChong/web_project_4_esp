@@ -13,58 +13,45 @@ import {
   cardImageInput,
   popupProfile,
   popupNewCard,
+  initialCardsData,
 } from "./constants.js";
 
 import {Card} from "./Card.js";
 import {closePopup} from "./utils.js";
 import {FormValidator} from "./FormValidator.js";
 
-const initialCards = [
-  {
-    title: "Lago di Braies",
-    url: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-  {
-    title: "Parque Nacional de la Vanoise",
-    url: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    title: "Latemar",
-    url: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    title: "Montañas Calvas",
-    url: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    title: "Lago Louise",
-    url: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    title: "Valle de Yosemite",
-    url: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-];
-
-initialCards.forEach((card) => {
+function renderCard(card) {
   const newCard = new Card(card, configCardSelectors);
-  const cardElement = newCard.createCard();
-  cardsContainer.prepend(cardElement);
-});
+  cardsContainer.prepend(newCard.createCard());
+}
 
-popups.forEach((form) => {
+function renderInitialCards() {
+  initialCardsData.forEach((card) => renderCard(card));
+}
+
+renderInitialCards();
+
+function validatePopupsForms() {
+  popups.forEach((form) => formValidation(form));
+}
+
+validatePopupsForms();
+
+function formValidation(form) {
   const formValidation = new FormValidator(form, configFormSelectors);
   formValidation.enableValidation();
-});
+}
 
-profileForm.addEventListener("submit", function (evt) {
+function handleProfileSubmit(evt) {
   evt.preventDefault();
   nameElement.textContent = nameInput.value;
   descriptionElement.textContent = descriptionInput.value;
   closePopup(popupProfile);
-});
+}
 
-newCardForm.addEventListener("submit", function (evt) {
+profileForm.addEventListener("submit", handleProfileSubmit);
+
+function handleNewCardFormSubmit(evt) {
   evt.preventDefault();
   const title = cardTitleInput.value;
   const url = cardImageInput.value;
@@ -73,4 +60,6 @@ newCardForm.addEventListener("submit", function (evt) {
   cardsContainer.prepend(cardElement);
   evt.target.reset();
   closePopup(popupNewCard);
-});
+}
+
+newCardForm.addEventListener("submit", handleNewCardFormSubmit);

@@ -40,3 +40,30 @@ export const configFormSelectors = {
   inputErrorClass: "popup__item_type_error",
   errorClass: "popup__item-error_active",
 };
+
+export const initialCardsData = [
+  {
+    title: "Lago di Braies",
+    url: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+  {
+    title: "Parque Nacional de la Vanoise",
+    url: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    title: "Latemar",
+    url: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    title: "Montañas Calvas",
+    url: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    title: "Lago Louise",
+    url: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    title: "Valle de Yosemite",
+    url: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+];
