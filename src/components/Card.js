@@ -1,5 +1,5 @@
-import {openPopup} from "./utils.js";
-import {popupImageContainer, popupImage, popupImageTitle} from "./constants.js";
+import {PopupWithImage} from "./PopupWithImage.js";
+import {popupImageContainer} from "../utils/constants.js";
 
 export class Card {
   constructor(data, configSelector) {
@@ -22,18 +22,14 @@ export class Card {
     this._setEventListeners();
 
     this._element.querySelector(this._configSelector.textSelector).textContent = this._title;
-    const cardImage = this._element.querySelector(this._configSelector.imageSelector);
-    cardImage.src = this._url;
-    cardImage.alt = this._title;
+    this._element.querySelector(this._configSelector.imageSelector).src = this._url;
 
     return this._element;
   }
 
-  _handleOpenPopup() {
-    openPopup(popupImageContainer);
-    popupImage.src = this._url;
-    popupImage.alt = this._title;
-    popupImageTitle.textContent = this._title;
+  handleOpenPopup() {
+    const popup = new PopupWithImage(popupImageContainer);
+    popup.open(this._title, this._url);
   }
 
   _deleteCard() {
@@ -46,7 +42,7 @@ export class Card {
 
   _setEventListeners() {
     this._element.querySelector(this._configSelector.imageSelector).addEventListener("click", () => {
-      this._handleOpenPopup();
+      this.handleOpenPopup();
     });
 
     this._element.querySelector(this._configSelector.deleteButton).addEventListener("click", () => {

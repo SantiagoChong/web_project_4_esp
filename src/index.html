@@ -3,28 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<link rel="stylesheet" href="./pages/index.css" />-->
     <title>Alrededor de los EE.UU.</title>
   </head>
   <body>
     <div class="root">
       <header class="header">
-        <img class="logo" src="./images/logo.svg" alt="logo" />
+        <img class="logo" src="<%=require('./images/logo.svg')%>" alt="logo" />
         <div class="header__line"></div>
       </header>
       <main class="container">
         <section class="profile">
           <div class="profile__container">
-            <img src="./images/image.jpg" alt="imagen de perfil" class="profile__photo" />
+            <img src="<%=require('./images/image.jpg')%>" alt="imagen de perfil" class="profile__photo" />
             <div class="profile__info">
-              <h1 class="profile__title">Jacques Cousteau</h1>
+              <h1 class="profile__title"></h1>
               <button type="button" class="profile__edit-button"></button>
-              <p class="profile__text">Explorador</p>
+              <p class="profile__text"></p>
             </div>
           </div>
           <button type="button" class="profile__add-button">
-            <img src="./images/add_button.svg" alt="boton de añadir" class="profile__button-item" />
+            <img src="<%=require('./images/add_button.svg')%>" alt="boton de añadir" class="profile__button-item" />
           </button>
         </section>
         <section class="elements">
@@ -35,8 +35,8 @@
         </footer>
         <div class="popup popup_profile">
           <div class="form form_profile">
-            <img class="popup__toggle" src="./images/close-icon.svg" alt="icono de cerrar" />
-            <form name="profile-form" class="popup__container" novalidate>
+            <img class="popup__toggle" src="<%=require('./images/close-icon.svg')%>" alt="icono de cerrar" />
+            <form id="form" name="profile-form" class="popup__container" novalidate>
               <h1 class="popup__title">Editar perfil</h1>
               <fieldset class="popup__input-container popup__fieldset">
                 <label for="name" class="popup__label"></label>
@@ -45,7 +45,6 @@
                   id="name"
                   class="popup__item popup__item_el_name"
                   name="name"
-                  value="Jacques Cousteau"
                   placeholder="Nombre"
                   required
                   minlength="2"
@@ -58,7 +57,6 @@
                   id="description"
                   class="popup__item popup__item_el_description"
                   name="description"
-                  value="Explorador"
                   placeholder="Acerca de mí"
                   required
                   minlength="2"
@@ -74,8 +72,8 @@
         </div>
         <div class="popup popup_new-card">
           <div class="form form_new-card">
-            <img class="popup__toggle" src="./images/close-icon.svg" alt="icono de cerrar" />
-            <form name="card-form" class="popup__container" novalidate>
+            <img class="popup__toggle" src="<%=require('./images/close-icon.svg')%>" alt="icono de cerrar" />
+            <form id="addForm" name="card-form" class="popup__container" novalidate>
               <h1 class="popup__title">Nuevo Lugar</h1>
               <fieldset class="popup__input-container popup__fieldset">
                 <label for="name" class="popup__label"></label>
@@ -109,7 +107,11 @@
         </div>
         <div class="popup popup_image">
           <div class="popup__image-container">
-            <img class="popup__toggle popup__toggle_close_image" src="./images/close-icon.svg" alt="icono de cerrar" />
+            <img
+              class="popup__toggle popup__toggle_close_image"
+              src="<%=require('./images/close-icon.svg')%>"
+              alt="icono de cerrar"
+            />
             <img class="popup__image" src=" " alt="imagen de tarjeta" />
             <p class="popup__image-title"></p>
           </div>
@@ -126,6 +128,6 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./pages/index.js"></script>
+    <!--<script type="module" src="./pages/index.js"></script>-->
   </body>
 </html>
