@@ -18,6 +18,10 @@ export class Section {
   }
 
   addItem(element) {
-    this._container.prepend(element);
+    this._container.append(element);
+  }
+
+  setItems(data) {
+    this._data = data;
   }
 }

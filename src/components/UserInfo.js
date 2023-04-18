@@ -1,38 +1,23 @@
 export class UserInfo {
-  constructor(userName, descriptionJob) {
-    this._userName = userName;
-    this._descriptionJob = descriptionJob;
+  constructor(name, about, avatar, _id) {
+    this._userName = name;
+    this._descriptionJob = about;
+    this._avatar = avatar;
+    this._userId = _id;
   }
 
   getUserInfo() {
     return {
       name: this._userName.textContent,
-      description: this._descriptionJob.textContent,
+      about: this._descriptionJob.textContent,
+      id: this._userId,
     };
   }
 
-  setUserInfo(name, description) {
+  setUserInfo(name, about, avatar, _id) {
     this._userName.textContent = name;
-    this._descriptionJob.textContent = description;
+    this._descriptionJob.textContent = about;
+    this._avatar.src = avatar;
+    this._userId = _id;
   }
 }
-
-/*class UserInfo {
-  getUserInfo() {
-    const nameContainer = document.querySelector(".profile__name");
-    const aboutContainer = document.querySelector(".profile__about");
-
-    return {
-      name: nameContainer.textContent,
-      about: aboutContainer.textContent,
-    };
-  }
-
-  setUserInfo({name, about}) {
-    const nameContainer = document.querySelector(".profile__name");
-    const aboutContainer = document.querySelector(".profile__about");
-
-    nameContainer.textContent = name;
-    aboutContainer.textContent = about;
-  }
-}*/

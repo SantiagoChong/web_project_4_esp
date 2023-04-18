@@ -17,6 +17,13 @@
         <section class="profile">
           <div class="profile__container">
             <img src="<%=require('./images/image.jpg')%>" alt="imagen de perfil" class="profile__photo" />
+            <button type="button" class="profile__photo-opacity">
+              <img
+                src="<%=require('./images/pencil.svg')%>"
+                alt="imagen de perfil editar"
+                class="profile__photo-edit"
+              />
+            </button>
             <div class="profile__info">
               <h1 class="profile__title"></h1>
               <button type="button" class="profile__edit-button"></button>
@@ -28,10 +35,10 @@
           </button>
         </section>
         <section class="elements">
-          <ul class="cards"></ul>
+          <div class="cards"></div>
         </section>
         <footer class="footer">
-          <p class="footer__copyright">© 2022 Santiago Chong</p>
+          <p class="footer__copyright">© 2023 Santiago Chong</p>
         </footer>
         <div class="popup popup_profile">
           <div class="form form_profile">
@@ -70,13 +77,36 @@
             </form>
           </div>
         </div>
+        <div class="popup popup_profile-photo">
+          <div class="form form_profile-photo">
+            <img class="popup__toggle" src="<%=require('./images/close-icon.svg')%>" alt="icono de cerrar" />
+            <form id="photoForm" name="photo-form" class="popup__container popup__container_small" novalidate>
+              <h1 class="popup__title">Cambiar foto de perfil</h1>
+              <fieldset class="popup__input-container popup__fieldset">
+                <label for="photo" class="popup__label"></label>
+                <input
+                  type="url"
+                  id="photo"
+                  class="popup__item popup__item_el_name"
+                  name="photo"
+                  placeholder="Enlace de la imagen"
+                  required
+                />
+                <span class="photo-error popup__item-error"></span>
+              </fieldset>
+              <fieldset class="popup__handlers">
+                <button type="submit" class="popup__button">Guardar</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
         <div class="popup popup_new-card">
           <div class="form form_new-card">
             <img class="popup__toggle" src="<%=require('./images/close-icon.svg')%>" alt="icono de cerrar" />
             <form id="addForm" name="card-form" class="popup__container" novalidate>
               <h1 class="popup__title">Nuevo Lugar</h1>
               <fieldset class="popup__input-container popup__fieldset">
-                <label for="name" class="popup__label"></label>
+                <label for="title" class="popup__label"></label>
                 <input
                   type="text"
                   id="title"
@@ -116,17 +146,36 @@
             <p class="popup__image-title"></p>
           </div>
         </div>
+        <div class="popup popup_confirmation">
+          <div class="form form_confitmation">
+            <img class="popup__toggle" src="<%=require('./images/close-icon.svg')%>" alt="icono de cerrar" />
+            <form
+              id="confirmationForm"
+              name="confirmation-form"
+              class="popup__container popup__container_confirmation"
+              novalidate
+            >
+              <h1 class="popup__title">¿Estás seguro/a?</h1>
+              <fieldset class="popup__handlers">
+                <button type="submit" class="popup__button">Sí</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
       </main>
     </div>
     <template class="template__cards">
-      <li class="cards__item">
+      <div class="cards__item">
         <img src=" " class="cards__image" />
         <button class="cards__delete-button"></button>
         <div class="cards__rectangle">
           <h3 class="cards__text"></h3>
-          <button class="cards__like-button"></button>
+          <div class="cards__like-container">
+            <button class="cards__like-button"></button>
+            <p class="cards__like-counter"></p>
+          </div>
         </div>
-      </li>
+      </div>
     </template>
     <!--<script type="module" src="./pages/index.js"></script>-->
   </body>

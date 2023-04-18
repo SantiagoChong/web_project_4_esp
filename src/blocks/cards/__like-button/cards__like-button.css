@@ -1,6 +1,4 @@
 .cards__like-button {
-  position: absolute;
-  right: 0;
   background-image: url(../../../images/like.svg);
   cursor: pointer;
   width: 21px;
