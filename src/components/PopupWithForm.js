@@ -21,6 +21,10 @@ export class PopupWithForm extends Popup {
     this._popupSelector.querySelector(configFormSelectors.formSelector).reset();
   }
 
+  setSubmitAction(action) {
+    this._handleSubmit = action;
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._popupSelector.querySelector(configFormSelectors.formSelector).addEventListener("submit", (evt) => {

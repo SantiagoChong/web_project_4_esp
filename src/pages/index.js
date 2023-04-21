@@ -13,7 +13,6 @@ import {
   popupProfile,
   popupAvatarProfile,
   popupNewCard,
-  initialCardsData,
   newCardButton,
   editButton,
   editPhotoButton,
@@ -32,16 +31,14 @@ export const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_03",
   headers: {
     authorization: "093facbb-999f-4e95-80c4-1209ec92f045",
-    "Content-Type": "application/json",
   },
 });
 
 //User Information
 const userInfo = new UserInfo(nameElement, descriptionElement, profileAvatar);
-api.getProfileInfo().then(({name, about, avatar}) => {
-  userInfo.setUserInfo(name, about, avatar);
+api.getProfileInfo().then((data) => {
+  userInfo.setUserInfo(data.name, data.about, data.avatar);
 });
-//userInfo.setUserInfo("Jacques Cousteau", "Explorador");
 
 //popup profile
 editButton.addEventListener("click", () => {
@@ -50,12 +47,12 @@ editButton.addEventListener("click", () => {
 
 const popupProfileForm = new PopupWithForm(popupProfile, profileFormSubmit);
 
-function profileFormSubmit(name, about) {
+function profileFormSubmit(data) {
   popupProfile.querySelector('button[type="submit"]').textContent = "Guardando...";
   api
-    .editProfile({name, about})
-    .then((data) => {
-      userInfo.setUserInfo(data);
+    .editProfile(data.name, data.description)
+    .then((res) => {
+      userInfo.setUserInfo(res.name, res.about, res.avatar, res._id);
     })
     .finally(() => {
       popupProfile.querySelector('button[type="submit"]').textContent = "Guardar";
@@ -73,9 +70,9 @@ const popupAvatarProfileForm = new PopupWithForm(popupAvatarProfile, profileAvat
 function profileAvatarFormSubmit(data) {
   popupAvatarProfile.querySelector('button[type="submit"]').textContent = "Guardando...";
   api
-    .newAvatar(data.avatar)
-    .then((data) => {
-      userInfo.setUserInfo(data);
+    .newAvatar(data.photo)
+    .then((res) => {
+      userInfo.setUserInfo(res.name, res.about, res.avatar, res._id);
     })
     .finally(() => {
       popupAvatarProfile.querySelector('button[type="submit"]').textContent = "Guardar";
@@ -104,6 +101,7 @@ validatePopupsForms();
 //Initial Cards
 function initialCards() {
   const getInitialCards = api.getInitialCards().then((data) => {
+    console.log(data);
     const sectionCards = new Section(
       {
         data: getInitialCards,
@@ -129,10 +127,23 @@ function handleAddCard() {
 }
 
 const addCard = new PopupWithForm(popupNewCard, (formValues) => {
-  api.addNewCard(formValues.name, formValues.link).then((card) => {
+  api.addNewCard(formValues.title, formValues.image).then((card) => {
     const newCard = new Card(card, configCardSelectors);
     cardsContainer.prepend(newCard.createCard());
   });
 });
 
 newCardButton.addEventListener("click", handleAddCard);
+
+//Delete Cards
+
+/*const popupDelete = new PopupWithForm(popupDeleteConfirmation, configCardSelectors.deleteButton);
+
+export function handleDeleteCard({id}) {
+  popupDelete.open();
+  popupDelete.setSubmitAction(() => {
+    api.deleteCard(id).then(() => {
+      cardElement._deleteCard();
+    });
+  });
+}*/

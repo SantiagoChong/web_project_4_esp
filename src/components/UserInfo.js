@@ -1,9 +1,8 @@
 export class UserInfo {
-  constructor(name, about, avatar, _id) {
-    this._userName = name;
-    this._descriptionJob = about;
+  constructor(userName, descriptionJob, avatar, _id) {
+    this._userName = userName;
+    this._descriptionJob = descriptionJob;
     this._avatar = avatar;
-    this._userId = _id;
   }
 
   getUserInfo() {

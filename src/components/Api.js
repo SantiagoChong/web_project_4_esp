@@ -8,10 +8,11 @@ export class Api {
     this._authorization = headers.authorization;
   }
 
-  _useFetch(baseUrl, {method, body}) {
+  _useFetch(baseUrl, method, body) {
     return fetch(baseUrl, {
       headers: {
         authorization: this._authorization,
+        "Content-Type": "application/json",
       },
       method,
       body: JSON.stringify(body),
@@ -23,7 +24,7 @@ export class Api {
         return Promise.reject(`Error: ${res.status}`);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       });
   }
 
@@ -37,8 +38,6 @@ export class Api {
     return this._useFetch(`${this._baseUrl}/users/me`, "PATCH", {
       name: name,
       about: about,
-    }).then((data) => {
-      return data;
     });
   }
 
@@ -78,27 +77,6 @@ export class Api {
   newAvatar(link) {
     return this._useFetch(`${this._baseUrl}/users/me/avatar`, "PATCH", {
       avatar: link,
-    }).then((data) => {
-      return data;
     });
   }
-
-  /*getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
-      headers: {
-        authorization: this._authorization,
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }*/
 }
