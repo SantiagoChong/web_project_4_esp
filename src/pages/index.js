@@ -38,6 +38,7 @@ export const api = new Api({
 const userInfo = new UserInfo(nameElement, descriptionElement, profileAvatar);
 api.getProfileInfo().then((data) => {
   userInfo.setUserInfo(data.name, data.about, data.avatar);
+  userInfo._userId = data._id;
 });
 
 //popup profile
@@ -48,7 +49,6 @@ editButton.addEventListener("click", () => {
 const popupProfileForm = new PopupWithForm(popupProfile, profileFormSubmit);
 
 function profileFormSubmit(data) {
-  popupProfile.querySelector('button[type="submit"]').textContent = "Guardando...";
   api
     .editProfile(data.name, data.description)
     .then((res) => {
@@ -68,7 +68,6 @@ editPhotoButton.addEventListener("click", () => {
 const popupAvatarProfileForm = new PopupWithForm(popupAvatarProfile, profileAvatarFormSubmit);
 
 function profileAvatarFormSubmit(data) {
-  popupAvatarProfile.querySelector('button[type="submit"]').textContent = "Guardando...";
   api
     .newAvatar(data.photo)
     .then((res) => {
@@ -106,6 +105,7 @@ function initialCards() {
       {
         data: getInitialCards,
         renderer: (cardItem) => {
+          cardItem.me = userInfo.getUserInfo();
           const newCard = new Card(cardItem, configCardSelectors);
           const cardElement = newCard.createCard();
 
@@ -127,23 +127,17 @@ function handleAddCard() {
 }
 
 const addCard = new PopupWithForm(popupNewCard, (formValues) => {
-  api.addNewCard(formValues.title, formValues.image).then((card) => {
-    const newCard = new Card(card, configCardSelectors);
-    cardsContainer.prepend(newCard.createCard());
-  });
+  api
+    .addNewCard(formValues.title, formValues.image)
+    .then((cardItem) => {
+      cardItem.me = userInfo.getUserInfo();
+      const newCard = new Card(cardItem, configCardSelectors);
+      cardsContainer.prepend(newCard.createCard());
+    })
+    .finally(() => {
+      popupNewCard.querySelector('button[type="submit"]').textContent = "Crear";
+      addCard.close();
+    });
 });
 
 newCardButton.addEventListener("click", handleAddCard);
-
-//Delete Cards
-
-/*const popupDelete = new PopupWithForm(popupDeleteConfirmation, configCardSelectors.deleteButton);
-
-export function handleDeleteCard({id}) {
-  popupDelete.open();
-  popupDelete.setSubmitAction(() => {
-    api.deleteCard(id).then(() => {
-      cardElement._deleteCard();
-    });
-  });
-}*/

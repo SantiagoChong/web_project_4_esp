@@ -3,13 +3,15 @@ export class UserInfo {
     this._userName = userName;
     this._descriptionJob = descriptionJob;
     this._avatar = avatar;
+    this._userId = _id;
   }
 
   getUserInfo() {
     return {
       name: this._userName.textContent,
       about: this._descriptionJob.textContent,
-      id: this._userId,
+      _id: this._userId,
+      avatar: this._avatar.src,
     };
   }
 

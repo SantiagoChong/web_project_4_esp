@@ -29,9 +29,7 @@ export class Api {
   }
 
   getProfileInfo() {
-    return this._useFetch(`${this._baseUrl}/users/me`, "GET").then((data) => {
-      return data;
-    });
+    return this._useFetch(`${this._baseUrl}/users/me`, "GET");
   }
 
   editProfile(name, about) {
@@ -42,9 +40,7 @@ export class Api {
   }
 
   getInitialCards() {
-    return this._useFetch(`${this._baseUrl}/cards`, "GET").then((data) => {
-      return data;
-    });
+    return this._useFetch(`${this._baseUrl}/cards`, "GET");
   }
 
   addNewCard(name, link) {
@@ -57,21 +53,15 @@ export class Api {
   }
 
   deleteCard(cardId) {
-    return this._useFetch(`${this._baseUrl}/cards/${cardId}`, "DELETE").then((data) => {
-      return data;
-    });
+    return this._useFetch(`${this._baseUrl}/cards/${cardId}`, "DELETE");
   }
 
   addCardLike(cardId) {
-    return this._useFetch(`${this._baseUrl}/cards/likes/${cardId}`, "PUT").then((data) => {
-      return data;
-    });
+    return this._useFetch(`${this._baseUrl}/cards/likes/${cardId}`, "PUT");
   }
 
   deleteCardLike(cardId) {
-    return this._useFetch(`${this._baseUrl}/cards/likes/${cardId}`, "DELETE").then((data) => {
-      return data;
-    });
+    return this._useFetch(`${this._baseUrl}/cards/likes/${cardId}`, "DELETE");
   }
 
   newAvatar(link) {

@@ -25,12 +25,21 @@ export class PopupWithForm extends Popup {
     this._handleSubmit = action;
   }
 
+  loading(isLoading) {
+    if (isLoading) {
+      this._popupSelector.querySelector('button[type="submit"]').textContent = "Guardando...";
+    } else {
+      this._popupSelector.querySelector('button[type="submit"]').textContent = "";
+    }
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._popupSelector.querySelector(configFormSelectors.formSelector).addEventListener("submit", (evt) => {
       evt.preventDefault();
+      this.loading(true);
       this._handleSubmit(this._getInputValues());
-      this.close();
+      //this.close();
     });
   }
 }
