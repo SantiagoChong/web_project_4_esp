@@ -47,8 +47,6 @@ export class Api {
     return this._useFetch(`${this._baseUrl}/cards`, "POST", {
       name: name,
       link: link,
-    }).then((data) => {
-      return data;
     });
   }
 

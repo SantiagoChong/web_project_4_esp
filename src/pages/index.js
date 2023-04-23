@@ -20,7 +20,7 @@ import {
 
 import {Section} from "../components/Section.js";
 import {Card} from "../components/Card.js";
-import {FormValidator} from "../utils/FormValidator.js";
+import {FormValidator} from "../components/FormValidator.js";
 import {PopupWithForm} from "../components/PopupWithForm.js";
 import {UserInfo} from "../components/UserInfo.js";
 import {Api} from "../components/Api.js";
@@ -46,9 +46,9 @@ editButton.addEventListener("click", () => {
   popupProfileForm.open();
 });
 
-const popupProfileForm = new PopupWithForm(popupProfile, profileFormSubmit);
+const popupProfileForm = new PopupWithForm(popupProfile, submitProfileForm);
 
-function profileFormSubmit(data) {
+function submitProfileForm(data) {
   api
     .editProfile(data.name, data.description)
     .then((res) => {
@@ -65,9 +65,9 @@ editPhotoButton.addEventListener("click", () => {
   popupAvatarProfileForm.open();
 });
 
-const popupAvatarProfileForm = new PopupWithForm(popupAvatarProfile, profileAvatarFormSubmit);
+const popupAvatarProfileForm = new PopupWithForm(popupAvatarProfile, submitAvatarForm);
 
-function profileAvatarFormSubmit(data) {
+function submitAvatarForm(data) {
   api
     .newAvatar(data.photo)
     .then((res) => {
@@ -80,27 +80,26 @@ function profileAvatarFormSubmit(data) {
 }
 
 //Validate Forms
-function popupValues() {
+function renderPopupValues() {
   nameInput.value = nameElement.textContent;
   descriptionInput.value = descriptionElement.textContent;
 }
-popupValues();
+renderPopupValues();
 
-function formValidation(form) {
+function handleFormValidation(form) {
   const formValidation = new FormValidator(form, configFormSelectors);
   formValidation.enableValidation();
 }
 
 function validatePopupsForms() {
-  popups.forEach((form) => formValidation(form));
+  popups.forEach((form) => handleFormValidation(form));
 }
 
 validatePopupsForms();
 
 //Initial Cards
-function initialCards() {
+function renderInitialCards() {
   const getInitialCards = api.getInitialCards().then((data) => {
-    console.log(data);
     const sectionCards = new Section(
       {
         data: getInitialCards,
@@ -119,7 +118,7 @@ function initialCards() {
   });
 }
 
-initialCards();
+renderInitialCards();
 
 //Add Cards
 function handleAddCard() {
